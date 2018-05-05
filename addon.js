@@ -1,7 +1,6 @@
 "use strict"
 
 const path = require("path")
-const {spawn} = require('child_process')
 const UIPage  = require(path.dirname(module.parent.filename) + '/../mod/uipage')
 const fs = require('fs')
 
@@ -21,11 +20,13 @@ class Analytics extends UIPage {
 
 			document.querySelector('#contents').appendChild(self._contentElement)
 
-			
-			riot.compile('/' + __dirname.replace(/\\/g, '/') + '/res/anaframe.tag', () => {
+			let tagScript = document.createElement('script')
+			tagScript.setAttribute('type', 'application/javascript')
+			tagScript.setAttribute('src', '/' + __dirname.replace(/\\/g, '/') + '/res/anaframe.js')
+			tagScript.addEventListener('load', () => {
 				riot.mount(self._view)
 			})
-			
+			document.querySelector('body').appendChild(tagScript)
 		})
 	}
 
