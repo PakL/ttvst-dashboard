@@ -1,8 +1,8 @@
 {
 	"name": "analytics",
-	"version": "0.0.4",
+	"version": "0.1.0",
 	"dependencies": {
 	},
 	"systems": ["win32"],
-	"toolversion": "0.3.x"
+	"toolversion": "0.x.x"
 }
