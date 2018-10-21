@@ -53,10 +53,14 @@
 			
 			let webcontent = frame.getWebContents()
 			webcontent.insertCSS('\
-nav.top-nav { display: none !important; }\
-div.dashboard-side-nav { display: none !important; }\
-')
-			webcontent.executeJavaScript('document.querySelector("body").classList.add("tw-theme--dark"); setTimeout(() => { document.querySelectorAll("a.button")[0].style.display="none"; }, 2000);')
+					.top-nav { display: none !important; }\
+					.dashboard-side-nav { display: none !important; }\
+			')
+			webcontent.executeJavaScript('\
+				document.querySelector("body").classList.add("tw-theme--dark");\
+				document.querySelector("body").classList.add("tw-root--theme-dark");\
+				setTimeout(() => { document.querySelectorAll("a.button")[0].style.display="none"; }, 2000);\
+			')
 		}
 
 	</script>
