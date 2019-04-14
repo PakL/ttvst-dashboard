@@ -38,5 +38,9 @@ class Analytics extends UIPage {
 	close() {
 		this._contentElement.style.display = 'none'
 	}
+
+	get icon() {
+		return '📈'
+	}
 }
 module.exports = Analytics

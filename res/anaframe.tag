@@ -57,8 +57,7 @@
 					.dashboard-side-nav { display: none !important; }\
 			')
 			webcontent.executeJavaScript('\
-				document.querySelector("body").classList.add("tw-theme--dark");\
-				document.querySelector("body").classList.add("tw-root--theme-dark");\
+				document.querySelector("html").classList.add("tw-root--theme-dark");\
 				setTimeout(() => { document.querySelectorAll("a.button")[0].style.display="none"; }, 2000);\
 			')
 		}
