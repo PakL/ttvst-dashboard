@@ -16,18 +16,12 @@ class Analytics extends UIPage {
 		this._contentElement = document.createElement('div')
 		this._contentElement.appendChild(this._view)
 
-		this._tool.on('load', () => {
+		let anaframeTag = fs.readFileSync(__dirname.replace(/\\/g, '/') + '/res/anaframe.tag', { encoding: 'utf8' })
+		let {code} = riot.compileFromString(anaframeTag)
+		riot.inject(code, 'anaframe', __dirname.replace(/\\/g, '/') + '/res/anaframe.tag')
 
-			document.querySelector('#contents').appendChild(self._contentElement)
-
-			let tagScript = document.createElement('script')
-			tagScript.setAttribute('type', 'application/javascript')
-			tagScript.setAttribute('src', '/' + __dirname.replace(/\\/g, '/') + '/res/anaframe.js')
-			tagScript.addEventListener('load', () => {
-				riot.mount(self._view)
-			})
-			document.querySelector('body').appendChild(tagScript)
-		})
+		document.querySelector('#contents').appendChild(this._contentElement)
+		riot.mount(this._view, { addon: this })
 	}
 
 	open() {
