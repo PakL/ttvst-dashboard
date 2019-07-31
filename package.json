@@ -1,5 +1,5 @@
 {
-	"name": "dashboad",
+	"name": "dashboard",
 	"description": "Embeds the Twitch Dashboard for easy access",
 	"version": "0.3.0",
 	"dependencies": {
