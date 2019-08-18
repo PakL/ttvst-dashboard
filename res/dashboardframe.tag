@@ -62,9 +62,11 @@
 				let webcontent = this.frame.getWebContents()
 				webcontent.executeJavaScript('\
 					var expandViewBtn = document.querySelector(".tw-block.tw-border-radius-rounded.tw-full-width.tw-interactable.tw-interactable--base.tw-interactable--border.tw-interactive");\
-					expandViewBtn.click();\
-					expandViewBtn.blur();\
-					expandViewBtn.remove();\
+					if(expandViewBtn !== null) {\
+						expandViewBtn.click();\
+						expandViewBtn.blur();\
+						expandViewBtn.remove();\
+					}\
 				')
 			},
 
