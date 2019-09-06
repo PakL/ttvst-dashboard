@@ -37,7 +37,7 @@ class Dashboard extends UIPage {
 	}
 
 	get icon() {
-		return '🚦'
+		return 'AutoRacing'
 	}
 }
 module.exports = Dashboard

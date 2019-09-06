@@ -81,10 +81,6 @@
 				
 				let webcontent = this.frame.getWebContents()
 				webcontent.insertCSS('\
-						/*.top-nav,\
-						.dashboard-side-nav,\
-						.ca-welcome-modal,\
-						.tw-tooltip-wrapper,*/\
 						div[data-test-selector=drag-and-drop-popout-button]\
 						{ display: none !important; }\
 				')
