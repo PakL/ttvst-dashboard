@@ -61,7 +61,7 @@
 			stoppedLoading() {
 				let webcontent = this.frame.getWebContents()
 				webcontent.executeJavaScript('\
-					var expandViewBtn = document.querySelector(".tw-block.tw-border-radius-rounded.tw-full-width.tw-interactable.tw-interactable--base.tw-interactable--border.tw-interactive");\
+					var expandViewBtn = document.querySelector(".dashboard-menu-container > div:first-child button");\
 					if(expandViewBtn !== null) {\
 						expandViewBtn.click();\
 						expandViewBtn.blur();\
