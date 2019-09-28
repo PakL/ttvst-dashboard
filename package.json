@@ -1,7 +1,7 @@
 {
 	"name": "dashboard",
 	"description": "Embeds the Twitch Dashboard for easy access",
-	"version": "0.3.2",
+	"version": "0.3.3",
 	"dependencies": {
 	},
 	"systems": ["win32"],
