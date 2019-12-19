@@ -28,9 +28,9 @@
 				const self = this
 				this.frame = this.root.querySelector('webview')
 				this.frame.addEventListener('did-finish-load', () => { self.pagechange() })
-				if(this._username.length > 0) {
-					this.frame.loadURL('https://www.twitch.tv/' + this._username.toLowerCase() + '/dashboard/')
-				}
+				/*if(this._username.length > 0) {
+					this.frame.loadURL('https://dashboard.twitch.tv/u/' + this._username.toLowerCase() + '/stream-manager')
+				}*/
 				this.frame.addEventListener('new-window', (e) => {
 					if(e.disposition != 'save-to-disk') {
 						shell.openExternal(e.url)
@@ -41,14 +41,13 @@
 				})
 				this.frame.addEventListener('did-stop-loading', (e) => {
 					Tool.ui.stopLoading(this.addon)
-					self.stoppedLoading()
 				})
 			},
 
 			openDashboard(username) {
 				this._username = username
 				if(this.frame !== null) {
-					this.frame.loadURL('https://www.twitch.tv/' + this._username.toLowerCase() + '/dashboard/')
+					this.frame.loadURL('https://dashboard.twitch.tv/u/' + this._username.toLowerCase() + '/stream-manager')
 				}
 			},
 
@@ -58,32 +57,16 @@
 				}
 			},
 
-			stoppedLoading() {
-				let webcontent = this.frame.getWebContents()
-				webcontent.executeJavaScript('\
-					var expandViewBtn = document.querySelector(".dashboard-menu-container > div:first-child button");\
-					if(expandViewBtn !== null) {\
-						expandViewBtn.click();\
-						expandViewBtn.blur();\
-						expandViewBtn.remove();\
-					}\
-				')
-			},
-
 			pagechange() {
 				let location = this.frame.getURL()
 				console.log('[Dashboard]' + location)
 
 				if(location.length <= 0 || location == 'about:blank') return
-				if(!location.startsWith('https://passport.twitch.tv/') && !location.startsWith('https://www.twitch.tv/' + this._username.toLowerCase() + '/dashboard/')) {
-					this.frame.loadURL('https://www.twitch.tv/' + this._username + '/dashboard/')
+				if(!location.startsWith('https://passport.twitch.tv/') && !location.startsWith('https://dashboard.twitch.tv/u/' + this._username.toLowerCase() + '/')) {
+					this.frame.loadURL('https://dashboard.twitch.tv/u/' + this._username.toLowerCase() + '/stream-manager')
 				}
 				
 				let webcontent = this.frame.getWebContents()
-				webcontent.insertCSS('\
-						div[data-test-selector=drag-and-drop-popout-button]\
-						{ display: none !important; }\
-				')
 				webcontent.executeJavaScript('\
 					document.querySelector("html").classList.add("tw-root--theme-dark");\
 				')
